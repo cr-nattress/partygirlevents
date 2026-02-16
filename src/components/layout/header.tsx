@@ -22,7 +22,7 @@ const navLinks = [
   { label: "Venues", href: "/venues" },
   {
     label: "Tools",
-    href: "/tools/style-quiz",
+    href: "/tools",
     children: [
       { label: "Wedding Style Quiz", href: "/tools/style-quiz" },
       { label: "Budget Estimator", href: "/tools/budget-estimator" },
