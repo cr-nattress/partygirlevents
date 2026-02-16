@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+/* ============================================
+   Party Girl Events — Design Tokens
+   "Elevated Warm Minimalism"
+   PLAN.md Section 5
+   ============================================ */
+
+@theme {
+  /* --- Colors --- */
+  --color-background: #FAF7F2;
+  --color-surface: #FFFFFF;
+  --color-foreground: #2D2A26;
+  --color-muted: #6B645C;
+
+  /* Accent (Terracotta / Warm Copper) */
+  --color-accent-50: #FDF6F1;
+  --color-accent-100: #FAEADE;
+  --color-accent-200: #F0D0B8;
+  --color-accent-300: #E4B693;
+  --color-accent-400: #D4A480;
+  --color-accent: #C4926E;
+  --color-accent-600: #A87A58;
+  --color-accent-700: #8C6347;
+  --color-accent-800: #704D38;
+  --color-accent-900: #5A3E2D;
+
+  /* Secondary (Sage Green) */
+  --color-secondary-50: #F3F6F3;
+  --color-secondary-100: #E4ECE4;
+  --color-secondary-200: #C5D5C5;
+  --color-secondary-300: #A5B5A5;
+  --color-secondary-400: #98AA98;
+  --color-secondary: #8B9E8B;
+  --color-secondary-600: #708670;
+  --color-secondary-700: #5A6E5A;
+  --color-secondary-800: #475747;
+  --color-secondary-900: #374237;
+
+  /* Mountain (Slate Blue) */
+  --color-mountain: #5B7B8A;
+
+  /* Dark sections */
+  --color-dark: #1A1918;
+
+  /* Status */
+  --color-error: #C4534A;
+  --color-success: #5C8A5B;
+
+  /* --- Typography --- */
+  --font-family-serif: var(--font-heading), "Cormorant Garamond", serif;
+  --font-family-sans: var(--font-body), "Inter", sans-serif;
+
+  /* --- Spacing --- */
+  /* Custom spacing tokens removed — they conflict with Tailwind v4's
+     built-in spacing scale (e.g. --spacing-2xl overrode max-w-2xl). */
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 20px rgba(196, 146, 110, 0.15);
+
+  /* --- Border Radius --- */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  /* --- Transitions --- */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-family-sans);
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* ============================================
+   Fluid Typography
+   ============================================ */
+
+.text-hero {
+  font-size: clamp(3rem, 8vw, 12rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.text-display {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+/* ============================================
+   Texture Overlay
+   ============================================ */
+
+.texture-grain {
+  position: relative;
+}
+
+.texture-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

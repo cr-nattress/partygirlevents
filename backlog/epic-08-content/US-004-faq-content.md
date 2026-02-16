@@ -1,0 +1,113 @@
+# US-004 — FAQ Content
+
+**Epic:** 08 — Content Pipeline
+**Priority:** P1
+**Points:** 3
+**Status:** Not Started
+
+---
+
+## Description
+
+Write and publish 25 FAQ answers organized across 5 categories, addressing the most common questions couples ask when considering a Colorado mountain wedding planner. Each answer is written in Stephanie's warm, approachable voice and addresses the emotional concern behind each question, not just the factual answer. The FAQ content powers the FAQ page template from Epic 02 US-006 and generates FAQPage schema markup for rich search results.
+
+---
+
+## Acceptance Criteria
+
+### Pricing Category (5 Questions)
+- [ ] "How much does a wedding planner cost in Colorado?" — answer written, links to services page
+- [ ] "What's included in your pricing?" — answer written, links to services page with tier breakdown
+- [ ] "Do you offer payment plans?" — answer written, addresses financial accessibility concern
+- [ ] "What's the average cost of a Colorado mountain wedding?" — answer written, links to relevant blog post when published (US-002 Month 3)
+- [ ] "Is a wedding planner worth the investment?" — answer written, includes ROI framing and emotional reassurance, links to case studies
+
+### Process Category (5 Questions)
+- [ ] "What does the planning process look like?" — answer written, outlines key milestones, links to services page
+- [ ] "How far in advance should I book a planner?" — answer written, addresses urgency without being pushy
+- [ ] "What's a discovery call?" — answer written, demystifies the first step, links to contact/booking page
+- [ ] "How involved will I be in the planning?" — answer written, reassures couples they maintain control and decision-making
+- [ ] "What happens on the wedding day?" — answer written, paints picture of day-of coordination, links to relevant case study
+
+### Services Category (5 Questions)
+- [ ] "What's the difference between full service and wedding management?" — answer written, clearly distinguishes tiers, links to services page
+- [ ] "Do you plan elopements?" — answer written, addresses elopement services with enthusiasm
+- [ ] "Do you handle corporate events?" — answer written, addresses scope or redirects appropriately
+- [ ] "Can you help with just the design/styling?" — answer written, clarifies design-only availability
+- [ ] "Do you coordinate rehearsal dinners?" — answer written, explains what auxiliary events are covered
+
+### Colorado-Specific Category (5 Questions)
+- [ ] "What's the best season for a Colorado mountain wedding?" — answer written, covers all 4 seasons with pros/cons, links to relevant blog post and venue guides
+- [ ] "How do you handle weather contingencies?" — answer written, reassures with specific backup plan strategies
+- [ ] "What about altitude sickness for guests?" — answer written, provides practical tips and demonstrates local expertise
+- [ ] "How far is [Vail/Aspen/etc.] from Denver?" — answer written, includes drive times and transportation tips, links to venue guides
+- [ ] "Do you work in areas outside Vail/Beaver Creek/Aspen?" — answer written, clarifies service area and willingness to travel
+
+### Logistics Category (5 Questions)
+- [ ] "How many weddings do you take per year?" — answer written, frames limited capacity as a quality commitment
+- [ ] "Do you travel for destination weddings?" — answer written, addresses out-of-state/destination availability
+- [ ] "What if I need to change my wedding date?" — answer written, addresses flexibility with empathy
+- [ ] "Do you work with specific vendors?" — answer written, explains preferred vendor network as a benefit, links to vendor credits in case studies
+- [ ] "What's your cancellation policy?" — answer written, addresses with transparency and compassion
+
+### Voice and Quality Standards
+- [ ] All 25 answers written in Stephanie's warm, approachable voice — not corporate, legal, or generic
+- [ ] Each answer is 100-300 words (enough to be helpful without being overwhelming)
+- [ ] Each answer addresses the emotional concern behind the question, not just the factual answer
+- [ ] Internal links included where relevant (services, portfolio, venue guides, blog posts, contact page)
+- [ ] No jargon or industry terms used without explanation
+
+### Question Sourcing
+- [ ] Questions sourced from Reddit research (common wedding planner objections per PLAN.md reference `03-content-seo-blueprint.md`)
+- [ ] Questions sourced from Stephanie's real experience (questions she hears from couples most often)
+- [ ] Questions informed by competitor FAQ analysis (gaps in competitor answers = opportunity)
+
+### CMS and Schema
+- [ ] All 25 FAQ entries entered in CMS using the FAQ content model: question, answer, category, sort order
+- [ ] Categories ordered logically: Pricing, Process, Services, Colorado-Specific, Logistics
+- [ ] Questions ordered within each category from most common/important to least
+- [ ] FAQPage schema markup auto-generated by FAQ page template (Epic 02 US-006) and validated
+
+### Ongoing Maintenance
+- [ ] Quarterly review process established: add new questions based on common inquiries received
+- [ ] Process for updating existing answers when services, pricing, or policies change
+- [ ] Analytics tracking which FAQ questions get the most views/clicks (via PostHog)
+
+---
+
+## Technical Notes
+
+- FAQ page uses the template built in Epic 02 US-006 — content population only, no template changes needed
+- FAQ content model in CMS should support: question (string), answer (rich text for internal links and formatting), category (enum/select), sort order (number)
+- FAQPage schema markup should be auto-generated from CMS data — each question/answer pair becomes a `Question` entity within the `FAQPage` schema
+- Rich text answers should support: bold text, internal links, bullet lists (for answers that benefit from lists, like altitude tips)
+- Consider implementing accordion UI for FAQ categories — expand/collapse for clean browsing experience (this should be handled by Epic 02 US-006 template)
+- Internal links within answers should use descriptive anchor text, not "click here" — e.g., "learn about our full-service planning" linking to the services page
+- FAQ content also serves as a training resource for any future chatbot or AI assistant (Epic 07)
+- Some FAQ answers will naturally overlap with blog content (US-002) — the FAQ answer should be concise and link to the longer-form blog post for depth
+- Track which FAQ questions users click most frequently to inform content strategy and identify new blog post opportunities
+
+---
+
+## Dependencies
+
+- Epic 02 US-006 — FAQ page template (must be built and deployed before content can be published)
+- Stephanie's input — personal voice, authentic answers, review of all 25 entries before publication
+- PLAN.md reference `03-content-seo-blueprint.md` — Reddit research and competitor analysis as question sources
+- US-001 — Case study production (for linking to portfolio entries from relevant answers)
+- US-002 — Blog content calendar (for linking to related blog posts from relevant answers; can add links as posts are published)
+- US-003 — Venue guide content (for linking to venue guides from Colorado-specific answers)
+
+---
+
+## Definition of Done
+
+- [ ] All 25 FAQ answers published on the live FAQ page across 5 categories
+- [ ] Each answer is 100-300 words, written in Stephanie's voice, and addresses the emotional concern behind the question
+- [ ] Internal links present and working in all answers where relevant
+- [ ] FAQPage schema markup validated via Google Rich Results Test — all 25 questions rendering correctly
+- [ ] FAQ page loads within Core Web Vitals targets (LCP < 2.5s, CLS < 0.1)
+- [ ] CMS entries complete with all fields: question, answer, category, sort order
+- [ ] Stephanie has reviewed and approved all 25 FAQ answers
+- [ ] Quarterly review process documented and scheduled
+- [ ] PostHog tracking configured for FAQ question interactions (clicks/views per question)
