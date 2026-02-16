@@ -19,6 +19,7 @@ const navLinks = [
     ],
   },
   { label: "Portfolio", href: "/portfolio" },
+  { label: "Venues", href: "/venues" },
   {
     label: "Tools",
     href: "/tools/style-quiz",
