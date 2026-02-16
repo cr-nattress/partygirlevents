@@ -22,6 +22,9 @@ Phase 2 — Differentiators (Weeks 7-12)
 Phase 3 — AI-Forward (Months 4-8)
 └── Epic 07: AI Features                       Months 4-8
 
+Phase 1.5 — Content Launch (Weeks 6-10)
+└── Epic 09: 2026 Trend Blog Posts             Weeks 6-10
+
 Ongoing
 └── Epic 08: Content Pipeline                  Continuous
 ```
@@ -40,8 +43,9 @@ Ongoing
 | [06 — Differentiators](epic-06-differentiators/) | 2 | 8 | 29 | Not Started | Epic 05 (site live) |
 | [07 — AI Features](epic-07-ai-features/) | 3 | 10 | 55 | Not Started | Epic 05 (site live) |
 | [08 — Content Pipeline](epic-08-content/) | Ongoing | 4 | 16 | Not Started | Epic 02 (templates) |
+| [09 — 2026 Trend Blog Posts](epic-09-trend-blog-posts/) | 1.5 | 10 | 47 | Not Started | Epic 01 (components) |
 
-**Total: 8 epics, 48 user stories, 194 story points**
+**Total: 9 epics, 58 user stories, 241 story points**
 
 ---
 
