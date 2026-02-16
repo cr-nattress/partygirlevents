@@ -1669,6 +1669,215 @@ export const sampleVenues: Venue[] = [
       "TenMile Station is a showstopper. The gondola ride up builds anticipation beautifully, and the views from 11,000 feet are jaw-dropping. It is perfect for couples who want that authentic mountain lodge feeling without sacrificing elegance. A few things to plan around: the altitude is real at 11,000 feet, so make sure your guests are prepared. Weather at that elevation changes fast, so we always build in extra contingency time. The gondola logistics require careful timeline planning. Also, the outdoor ceremony area can be windy in the afternoon, so I usually recommend a morning or early afternoon ceremony time. Despite the logistics, every couple I have brought here says it was the most magical venue they could have imagined.",
     status: "published",
   },
+  {
+    slug: "ritz-carlton-bachelor-gulch",
+    name: "The Ritz-Carlton, Bachelor Gulch",
+    location: "beaver-creek",
+    description:
+      "Tucked into the mountainside between Beaver Creek and Vail, The Ritz-Carlton Bachelor Gulch is a grand alpine lodge that feels like stepping into the most elegant ski chalet imaginable. The property features a sprawling outdoor terrace with panoramic views of the Sawatch Range, a magnificent great hall with floor-to-ceiling stone fireplaces, and impeccable Ritz-Carlton service at every turn. The resort's secluded location creates a true destination feel, while the spa, ski-in/ski-out access, and multiple dining options keep guests entertained all weekend. For couples who want world-class luxury wrapped in authentic mountain grandeur, Bachelor Gulch delivers on every level.",
+    photos: [
+      {
+        src: "/images/venues/ritz-bachelor-gulch-terrace.jpg",
+        alt: "The Ritz-Carlton Bachelor Gulch outdoor terrace set for a ceremony with mountain panorama",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/images/venues/ritz-bachelor-gulch-great-hall.jpg",
+        alt: "The great hall at The Ritz-Carlton Bachelor Gulch with stone fireplaces and timber beams",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/images/venues/ritz-bachelor-gulch-exterior.jpg",
+        alt: "The Ritz-Carlton Bachelor Gulch lodge exterior nestled into the mountain in winter",
+        width: 1200,
+        height: 800,
+      },
+    ],
+    capacity: { min: 30, max: 300 },
+    priceRange: "$$$$$",
+    seasons: ["summer", "fall", "winter"],
+    styleTags: [
+      "Ultra Luxury",
+      "Alpine Lodge",
+      "Ski Resort",
+      "Mountain Terrace",
+      "Destination",
+    ],
+    website: "https://www.ritzcarlton.com/en/hotels/bachelor-gulch",
+    stephNotes:
+      "Bachelor Gulch is where I send couples who want the Ritz-Carlton polish but wrapped in a mountain blanket. The terrace ceremony with the Sawatch Range behind you is pure magic, especially in late afternoon light. What sets this property apart is the seclusion: your guests truly feel like they have arrived somewhere special, and the whole weekend becomes an experience, not just a Saturday night. The events team is exceptional and very accustomed to high-end celebrations. One insider tip: request the terrace facing west for sunset ceremonies, and book the spa out for a bridal party morning. The only thing to watch is that the food-and-beverage minimums are significant, so this venue works best for larger celebrations or couples who want to invest deeply in the culinary experience.",
+    status: "published",
+  },
+  {
+    slug: "piney-river-ranch",
+    name: "Piney River Ranch",
+    location: "vail",
+    description:
+      "Hidden at the end of a winding backcountry road north of Vail, Piney River Ranch is a lakefront retreat that feels a world away from everything. The ranch sits on the shores of Piney Lake with the rugged Gore Range rising dramatically behind it, creating one of the most breathtaking ceremony backdrops in all of Colorado. The property offers a mix of rustic cabins, a charming lodge, and expansive outdoor event spaces including a lakeside ceremony meadow and a timber-frame pavilion. Canoes dot the shoreline, wildflowers blanket the meadows in summer, and the whole atmosphere radiates an unhurried, back-to-nature elegance that is impossible to replicate.",
+    photos: [
+      {
+        src: "/images/venues/piney-river-ranch-lake.jpg",
+        alt: "Piney River Ranch lakeside ceremony with the Gore Range reflected in Piney Lake",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/images/venues/piney-river-ranch-pavilion.jpg",
+        alt: "Timber-frame reception pavilion at Piney River Ranch with string lights at dusk",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/images/venues/piney-river-ranch-meadow.jpg",
+        alt: "Wildflower meadow at Piney River Ranch with rustic cabins and mountain backdrop",
+        width: 1200,
+        height: 800,
+      },
+    ],
+    capacity: { min: 20, max: 150 },
+    priceRange: "$$$",
+    seasons: ["summer", "fall"],
+    styleTags: [
+      "Rustic Elegant",
+      "Lakefront",
+      "Backcountry",
+      "Ranch",
+      "Intimate",
+      "Nature",
+    ],
+    website: "https://pineyriverranch.com",
+    stephNotes:
+      "Piney River Ranch is my go-to for couples who tell me they want something real, something that feels like Colorado at its most untouched. The drive in sets the tone perfectly: your guests wind through the backcountry for about twenty minutes and then suddenly this lake and these mountains open up, and everyone just gasps. It is genuinely one of the most beautiful settings I have ever worked in. The vibe is rustic but not rough; think farm tables with linen runners, copper accents, and wildflower arrangements that look like you gathered them that morning. A few practical notes: cell service is limited out there, which is actually wonderful, and the road is unpaved so I always coordinate guest shuttles. The season is short, roughly mid-June through late September, so book early.",
+    status: "published",
+  },
+  {
+    slug: "sapphire-point-overlook",
+    name: "Sapphire Point Overlook",
+    location: "keystone",
+    description:
+      "Sapphire Point is a stunning public overlook managed by the Dillon Ranger District, perched above the sparkling waters of Lake Dillon with sweeping views of the Tenmile Range and the Continental Divide. A short forested trail leads to a natural rock outcropping that serves as the ceremony site, framed by evergreens and open sky. This is one of the most popular elopement and intimate ceremony locations in Summit County, beloved for its accessibility, natural beauty, and remarkably affordable permit process. While the site does not include reception facilities, the ceremony setting is extraordinary and only minutes from Keystone, Dillon, and Silverthorne for post-ceremony celebrations.",
+    photos: [
+      {
+        src: "/images/venues/sapphire-point-ceremony.jpg",
+        alt: "Intimate ceremony at Sapphire Point Overlook with Lake Dillon and mountain views",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/images/venues/sapphire-point-overlook.jpg",
+        alt: "Sapphire Point rock outcropping overlooking Lake Dillon and the Tenmile Range",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/images/venues/sapphire-point-trail.jpg",
+        alt: "Forested trail leading to Sapphire Point ceremony site through pine trees",
+        width: 1200,
+        height: 800,
+      },
+    ],
+    capacity: { min: 2, max: 35 },
+    priceRange: "$",
+    seasons: ["summer", "fall"],
+    styleTags: [
+      "Elopement",
+      "Intimate",
+      "Outdoor",
+      "Lakeside",
+      "Budget-Friendly",
+      "Natural",
+    ],
+    website: "https://www.fs.usda.gov/recarea/whiteriver/recarea/?recid=40915",
+    stephNotes:
+      "Sapphire Point is proof that you do not need a massive budget to have a jaw-dropping ceremony. I have coordinated elopements here where the couple, their photographer, and maybe a handful of loved ones stand on that overlook, and the emotion combined with that view is absolutely overwhelming. The permit is straightforward through the Forest Service and costs very little compared to private venues. A few tips: the site is first-come, first-served for the ceremony window you reserve, so plan to arrive early. Weekday ceremonies have much less foot traffic from hikers. Wind can be a factor, so skip the long veils and loose paper. I usually pair Sapphire Point ceremonies with a celebratory dinner at a restaurant in Keystone or Frisco, which keeps the whole day simple and joyful.",
+    status: "published",
+  },
+  {
+    slug: "hotel-jerome-aspen",
+    name: "Hotel Jerome",
+    location: "aspen",
+    description:
+      "Built in 1889 during the silver mining boom, Hotel Jerome is the grand dame of Aspen and one of the most storied hotels in the American West. The property blends its Victorian heritage with a sophisticated modern renovation, offering ornate event spaces including the historic ballroom with its original tin ceilings and crystal chandeliers, a sun-drenched garden courtyard, and the iconic J-Bar which has been the social heart of Aspen for over a century. Hotel Jerome carries a sense of history and occasion that few mountain venues can match, and its location in the center of downtown Aspen means your guests have the entire town at their doorstep.",
+    photos: [
+      {
+        src: "/images/venues/hotel-jerome-ballroom.jpg",
+        alt: "Hotel Jerome historic ballroom with tin ceilings, crystal chandeliers, and elegant table settings",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/images/venues/hotel-jerome-courtyard.jpg",
+        alt: "Hotel Jerome garden courtyard set for an outdoor reception with string lights",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/images/venues/hotel-jerome-exterior.jpg",
+        alt: "Hotel Jerome historic brick facade with Aspen Mountain rising behind",
+        width: 1200,
+        height: 800,
+      },
+    ],
+    capacity: { min: 30, max: 200 },
+    priceRange: "$$$$",
+    seasons: ["summer", "fall", "winter", "spring"],
+    styleTags: [
+      "Historic",
+      "Victorian",
+      "Boutique Hotel",
+      "Downtown",
+      "Elegant",
+      "Iconic",
+    ],
+    website: "https://www.hoteljerome.com",
+    stephNotes:
+      "Hotel Jerome is for couples who want their wedding to feel like an event with a capital E. There is a gravitas to this building that you feel the moment you walk through the doors. The ballroom with those original tin ceilings is genuinely stunning, and it photographs beautifully in both candlelight and daylight. I love pairing a courtyard ceremony with a ballroom reception, moving guests from open sky to grand interiors. The J-Bar is also perfect for a late-night after-party; your guests will feel like they are in a movie. One thing I always mention: Hotel Jerome is a Auberge property, so the food and service are exceptional. The location in downtown Aspen is both a blessing and a consideration. Your guests can walk everywhere, but you are also sharing the streets with the public. For couples who love that energy, it is perfect.",
+    status: "published",
+  },
+  {
+    slug: "the-lodge-at-breckenridge",
+    name: "The Lodge at Breckenridge",
+    location: "breckenridge",
+    description:
+      "Sitting at 9,600 feet on the side of Baldy Mountain, The Lodge at Breckenridge offers some of the most expansive views of any wedding venue in Colorado. The property features a full 360-degree panorama that stretches across the Tenmile Range, the Continental Divide, and the historic town of Breckenridge far below. The lodge itself combines mountain timber architecture with a warm, welcoming atmosphere, offering both an outdoor ceremony deck and a handsome indoor reception space with massive windows that frame the view from every angle. The on-site Traverse Restaurant provides excellent catering, and the property includes guest rooms so your closest family and friends can stay right where the celebration happens.",
+    photos: [
+      {
+        src: "/images/venues/lodge-breckenridge-deck.jpg",
+        alt: "Outdoor ceremony deck at The Lodge at Breckenridge with 360-degree mountain panorama",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/images/venues/lodge-breckenridge-reception.jpg",
+        alt: "Reception space at The Lodge at Breckenridge with timber beams and mountain views through floor-to-ceiling windows",
+        width: 1200,
+        height: 800,
+      },
+      {
+        src: "/images/venues/lodge-breckenridge-exterior.jpg",
+        alt: "The Lodge at Breckenridge perched on Baldy Mountain above the town at sunset",
+        width: 1200,
+        height: 800,
+      },
+    ],
+    capacity: { min: 30, max: 200 },
+    priceRange: "$$$",
+    seasons: ["summer", "fall", "winter"],
+    styleTags: [
+      "Mountain Lodge",
+      "Panoramic Views",
+      "Timber",
+      "Elevated",
+      "On-Site Lodging",
+      "Scenic",
+    ],
+    website: "https://thelodgeatbreckenridge.com",
+    stephNotes:
+      "The Lodge at Breckenridge is one of those venues where you walk out onto the ceremony deck and just stand there speechless for a minute. The 360-degree views are not an exaggeration; you can literally see in every direction, and on a clear day the vista seems to go on forever. I especially love this venue for couples who want a mountain lodge feeling that is warm and approachable rather than over-the-top luxurious. The on-site rooms are a huge plus for families and older guests who want to avoid driving after the reception. Traverse does a wonderful job with catering and their team is easy to work with. One tip: the road up to the lodge is steep and winding, so I always arrange shuttle service for guests. It is not difficult, but after a few champagne toasts you want everyone riding safely. Fall weddings here with the aspens changing below you are something I will never get tired of seeing.",
+    status: "published",
+  },
 ];
 
 // =============================================================================
@@ -1730,6 +1939,141 @@ export const sampleFAQs: FAQ[] = [
       "Yes, and I am glad you are asking! Most Colorado mountain wedding venues sit between 8,000 and 11,000 feet above sea level. At that altitude, guests who are not acclimated may experience headaches, fatigue, shortness of breath, and increased sensitivity to alcohol. The good news is that with a little preparation, most people do just fine. I include altitude preparation guidance for every couple and recommend sending tips to your guests in advance. We also build hydration stations with electrolyte drinks into every event, suggest lighter cocktail hour menus, and pace the evening to account for the thinner air. I have never had a wedding where altitude was a serious issue, because we plan for it proactively.",
     category: "colorado",
     sortOrder: 6,
+    status: "published",
+  },
+  {
+    id: "faq-services-01",
+    question:
+      "What's the difference between Full Service Planning and Wedding Management?",
+    answer:
+      "This is one of the most common questions I get, and it is an important distinction. Full Service Planning means I am with you from the very beginning: helping you find your venue, build your vendor team, develop your design concept, manage your budget, and handle every detail from engagement to exit. Wedding Management is for couples who have already done a lot of the planning themselves but want a professional to take the reins in the final months, refine the logistics, and execute flawlessly on the day. Think of it this way: Full Service is hiring me as your partner from day one. Wedding Management is bringing me in as your closer. Both include full day-of coordination, and I pour the same care into every wedding regardless of service level.",
+    category: "services",
+    sortOrder: 7,
+    status: "published",
+  },
+  {
+    id: "faq-services-02",
+    question: "Do you plan elopements?",
+    answer:
+      "Absolutely, and I genuinely love them. Elopements in the Colorado mountains are some of the most meaningful celebrations I get to be part of. Whether it is just the two of you on a mountaintop or a small gathering of your closest people at a lakeside ceremony, I handle every detail so you can be fully present in the moment. My elopement planning includes location scouting, permit coordination, vendor recommendations for photographer and officiant, timeline creation, and on-site support. I have coordinated elopements at Sapphire Point, on mountain passes, in alpine meadows, and even on frozen lakes in winter. If you can dream it, we can probably make it happen.",
+    category: "services",
+    sortOrder: 8,
+    status: "published",
+  },
+  {
+    id: "faq-services-03",
+    question:
+      "Can you help with rehearsal dinners and welcome parties?",
+    answer:
+      "Yes, and I actually encourage it. Mountain weddings tend to be destination experiences for most guests, so building out a full weekend makes a huge difference. I can plan everything from a casual welcome drinks evening at a local brewery to an elegant rehearsal dinner at a private restaurant or mountain lodge. Multi-day weekend planning is included in my Full Service package, and it can be added to Wedding Management as well. Some of my favorite moments happen outside the wedding itself: late-night bonfires, morning-after brunches with the whole group, that kind of thing. I have strong relationships with restaurants and unique venues throughout the Vail Valley and Summit County that are perfect for these gatherings.",
+    category: "services",
+    sortOrder: 9,
+    status: "published",
+  },
+  {
+    id: "faq-colorado-03",
+    question:
+      "What are the best Colorado mountain wedding venues?",
+    answer:
+      "That really depends on your style, your guest count, and what kind of experience you want to create. For luxury resort weddings, I love The Sebastian in Vail, The Little Nell in Aspen, and The Ritz-Carlton Bachelor Gulch. For rustic-elegant outdoor celebrations, Piney River Ranch and TenMile Station in Breckenridge are absolutely stunning. For intimate elopements, Sapphire Point Overlook near Keystone is hard to beat. I have worked at venues throughout the Colorado mountains and have strong opinions about which ones deliver consistently. During our planning process, I will match you with venues based on your specific vision, and I am always happy to do site visits together so you can feel the space in person.",
+    category: "colorado",
+    sortOrder: 10,
+    status: "published",
+  },
+  {
+    id: "faq-colorado-04",
+    question:
+      "How do I plan for mountain weather on my wedding day?",
+    answer:
+      "Mountain weather is part of the magic, and also part of the planning. In summer, afternoons often bring brief thunderstorms, so I almost always recommend morning or early afternoon ceremonies for outdoor events. In fall, the weather is generally more stable but temperatures drop quickly after sunset. Winter weddings are beautiful but require thoughtful logistics around snow and cold. The most important thing I tell every couple is this: we always have a Plan B. Every outdoor ceremony should have a weather contingency, whether that is a tent, an indoor backup space, or a covered pavilion. I monitor weather forecasts obsessively in the week before your wedding and make the call with you at the right time. In all my years of planning mountain weddings, weather has never ruined a celebration. It has made a few even more memorable.",
+    category: "colorado",
+    sortOrder: 11,
+    status: "published",
+  },
+  {
+    id: "faq-colorado-05",
+    question: "What about wildfire season?",
+    answer:
+      "Wildfire season in Colorado typically runs from mid-June through September, and it is something I take very seriously in our planning. Wildfires can affect air quality with smoke haze, and in rare cases, fire restrictions can impact outdoor events. I stay closely connected with local fire districts and Forest Service updates throughout the season. For every summer and early fall wedding, I build contingency plans that account for potential smoke or fire restrictions, including indoor backup options and adjusted timelines. The reality is that most weddings are not directly impacted, but having a plan in place means we can adapt quickly if conditions change. I will always be transparent with you about current conditions and what they mean for your celebration.",
+    category: "colorado",
+    sortOrder: 12,
+    status: "published",
+  },
+  {
+    id: "faq-colorado-06",
+    question: "Can we have an outdoor ceremony in winter?",
+    answer:
+      "You absolutely can, and winter outdoor ceremonies are some of the most breathtaking events I plan. There is nothing quite like exchanging vows with snow-covered peaks behind you and the crisp mountain air around you. That said, it requires careful planning. I recommend keeping outdoor portions short, ideally fifteen to twenty minutes, and then moving everyone inside for cocktails and warmth. We provide cozy wraps or blankets for guests, set up portable heaters when the venue allows, and time the ceremony to take advantage of the best light and mildest temperatures. Hot cocoa stations and warm cider go a long way too. Some of my favorite venues for winter outdoor ceremonies include The Sebastian's terrace and The Lodge at Breckenridge's deck, both of which have immediate indoor access for the reception.",
+    category: "colorado",
+    sortOrder: 13,
+    status: "published",
+  },
+  {
+    id: "faq-logistics-01",
+    question:
+      "How do I get my guests to a mountain venue?",
+    answer:
+      "Transportation logistics are one of the most important pieces of mountain wedding planning, and I handle this for every wedding. Most guests fly into Denver International Airport or Eagle County Regional Airport, depending on your venue location. From Denver, it is about a two-hour drive to Summit County or a two-and-a-half-hour drive to Vail. I coordinate group shuttle services, provide detailed driving directions with mountain driving tips, and create arrival guides that help guests plan their travel. For the wedding day itself, I always arrange shuttle service between hotels and the venue, especially for mountain venues with steep or winding access roads. Nobody should be worrying about navigating unfamiliar mountain roads after celebrating with you all night.",
+    category: "logistics",
+    sortOrder: 14,
+    status: "published",
+  },
+  {
+    id: "faq-logistics-02",
+    question:
+      "What about accommodations for guests?",
+    answer:
+      "I help every couple build an accommodation strategy that works for their guest list and budget. Most mountain towns offer a range of options from luxury hotels and boutique inns to vacation rentals and condominiums. I negotiate room blocks at hotels near your venue with discounted rates and flexible cancellation policies. For larger weddings, I often set up blocks at two or three properties at different price points so guests can choose what works for them. I also create a lodging guide with recommendations for vacation rentals in the area, which are especially popular for families and groups who want to share a house for the weekend. The key is booking early, particularly for summer and fall weekends when mountain towns fill up fast.",
+    category: "logistics",
+    sortOrder: 15,
+    status: "published",
+  },
+  {
+    id: "faq-logistics-03",
+    question:
+      "Do I need a backup plan for outdoor ceremonies?",
+    answer:
+      "Yes, always. I know that is not what anyone wants to hear when they are dreaming of saying their vows under open sky, but a solid backup plan is non-negotiable for mountain weddings. The good news is that most venues have beautiful indoor alternatives or covered options, and I work with excellent tent companies who can set up elegant structures that still feel open and connected to the landscape. During our planning process, we will identify your Plan B early and make sure it is a space you genuinely love, not just a grudging fallback. I have had weddings where we moved indoors and the couple told me afterward that it was even more beautiful than they had imagined. The key is planning the backup with the same care as the primary plan.",
+    category: "logistics",
+    sortOrder: 16,
+    status: "published",
+  },
+  {
+    id: "faq-logistics-04",
+    question:
+      "What's the deal with permit requirements for mountain weddings?",
+    answer:
+      "If you are planning a ceremony or event on public land in Colorado, such as National Forest land or county open space, you will need a special use permit. This applies to popular spots like Sapphire Point, Vail Mountain, and many backcountry ceremony locations. The permit process varies by ranger district but typically involves an application, a fee, and some conditions around group size, noise, and site restoration. Private venues handle their own permitting, so you generally do not need to worry about it if you are at a hotel or resort. I manage the entire permit process for my couples, from application to compliance, so you never have to navigate the bureaucracy yourself. I have strong relationships with the local ranger districts and know exactly what each one requires.",
+    category: "logistics",
+    sortOrder: 17,
+    status: "published",
+  },
+  {
+    id: "faq-pricing-03",
+    question:
+      "What's the average cost of a Colorado mountain wedding?",
+    answer:
+      "The average Colorado mountain wedding typically ranges from $40,000 to $100,000 or more, depending on guest count, venue, and the level of detail you are going for. Destination mountain weddings tend to run higher than Front Range celebrations because of the logistics involved: transportation, lodging coordination, vendor travel fees, and the premium that comes with operating at altitude. That said, beautiful mountain weddings absolutely happen at every budget level. Elopements and micro-weddings can come together for $5,000 to $15,000. My role is to help you allocate your budget wisely and invest in the things that will matter most to you. I am always honest about where to splurge and where to save, and I will never push you toward spending more than you are comfortable with.",
+    category: "pricing",
+    sortOrder: 18,
+    status: "published",
+  },
+  {
+    id: "faq-pricing-04",
+    question: "Do you offer payment plans?",
+    answer:
+      "Yes, I do. I understand that wedding expenses add up quickly, and I want to make working together as comfortable as possible. My standard payment structure breaks the total investment into installments spread across the planning timeline, with an initial retainer to secure your date and the balance paid in stages leading up to the wedding. The specific schedule depends on your service level and how far out we are from your date. I am always happy to discuss payment timing during our initial consultation and find an arrangement that works for your financial situation. My goal is for you to feel great about your investment, not stressed about it.",
+    category: "pricing",
+    sortOrder: 19,
+    status: "published",
+  },
+  {
+    id: "faq-process-03",
+    question: "How many weddings do you do per year?",
+    answer:
+      "I intentionally limit my calendar to around fifteen to twenty weddings per year. This is a deliberate choice because I believe every couple deserves my full attention and energy, not a watered-down version of what I can offer when I am stretched too thin. Limiting my calendar means I can be fully present for your planning process, respond to emails and calls promptly, and show up on your wedding day rested and ready to give you everything I have got. It also means I do book up, especially for peak weekends in July, August, and September. If you have a specific date in mind, I encourage you to reach out early so we can check availability.",
+    category: "process",
+    sortOrder: 20,
     status: "published",
   },
 ];

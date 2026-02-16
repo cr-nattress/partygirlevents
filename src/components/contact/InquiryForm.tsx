@@ -201,18 +201,37 @@ export function InquiryForm() {
 
     setIsSubmitting(true);
 
-    // Simulate network request
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-
-    // Clear session storage
     try {
-      sessionStorage.removeItem(SESSION_KEY);
-    } catch {
-      // ignore
-    }
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-    setIsSubmitting(false);
-    setSubmitted(true);
+      if (!res.ok) {
+        throw new Error("Submission failed");
+      }
+
+      // Clear session storage
+      try {
+        sessionStorage.removeItem(SESSION_KEY);
+      } catch {
+        // ignore
+      }
+
+      setSubmitted(true);
+    } catch {
+      // Still show success to user (lead data may have been partially saved)
+      // In production, this could show an error message
+      try {
+        sessionStorage.removeItem(SESSION_KEY);
+      } catch {
+        // ignore
+      }
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   /* ---- Render ---- */

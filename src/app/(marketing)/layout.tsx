@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { FloatingCta } from "@/components/layout/floating-cta";
+import { ChatBubble } from "@/components/chat";
 
 export default function MarketingLayout({
   children,
@@ -13,6 +14,7 @@ export default function MarketingLayout({
       <main>{children}</main>
       <Footer />
       <FloatingCta />
+      <ChatBubble />
     </>
   );
 }
