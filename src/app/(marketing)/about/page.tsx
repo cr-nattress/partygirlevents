@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Section, PageHero, Container } from "@/components/layout";
 import { Button } from "@/components/ui";
 import { MetricCounter } from "@/components/about/MetricCounter";
+import { PersonJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "About Stephanie | Party Girl Events",
@@ -27,8 +28,16 @@ const pressFeatures = [
 ];
 
 export default function AboutPage() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://partygirl.events";
+
   return (
     <>
+      <PersonJsonLd />
+      <BreadcrumbJsonLd items={[
+        { name: "Home", url: siteUrl },
+        { name: "About", url: `${siteUrl}/about` },
+      ]} />
+
       {/* Hero */}
       <PageHero
         variant="minimal"

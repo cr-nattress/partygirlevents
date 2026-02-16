@@ -2,6 +2,9 @@ import { Metadata } from "next";
 import { PageHero } from "@/components/layout";
 import { Section } from "@/components/layout";
 import { InquiryForm } from "@/components/contact/InquiryForm";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://partygirl.events";
 
 export const metadata: Metadata = {
   title: "Get in Touch | Party Girl Events",
@@ -12,6 +15,11 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[
+        { name: "Home", url: siteUrl },
+        { name: "Contact", url: `${siteUrl}/contact` },
+      ]} />
+
       <PageHero
         variant="minimal"
         headline="Let's Start Planning"

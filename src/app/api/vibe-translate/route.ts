@@ -1,10 +1,26 @@
 import { openai } from "@ai-sdk/openai";
 import { streamText } from "ai";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export const runtime = "edge";
 
 export async function POST(req: Request) {
   try {
+    if (process.env.AI_VIBE_TRANSLATOR_ENABLED === "false") {
+      return new Response("Vibe translator is temporarily unavailable.", {
+        status: 503,
+      });
+    }
+
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0] ?? "unknown";
+    const { allowed } = await checkRateLimit(`vibe:${ip}`, 5, 86_400_000);
+    if (!allowed) {
+      return new Response(
+        "You've reached the daily limit for vibe translations. Book a free discovery call to explore your wedding style with Stephanie!",
+        { status: 429 },
+      );
+    }
+
     const { description } = await req.json();
 
     if (

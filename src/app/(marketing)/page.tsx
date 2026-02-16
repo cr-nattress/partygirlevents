@@ -10,6 +10,7 @@ import { Card, CardContent, CardFooter, CardImage } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/home/AnimatedSection";
 import { TestimonialCarousel } from "@/components/home/TestimonialCarousel";
+import { WebSiteJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Colorado Mountain Wedding Planner | Party Girl Events",
@@ -97,6 +98,9 @@ export default async function HomePage() {
 
   return (
     <>
+      <WebSiteJsonLd />
+      <BreadcrumbJsonLd items={[{ name: "Home", url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://partygirl.events" }]} />
+
       {/* ================================================================= */}
       {/* Section 1: Hero */}
       {/* ================================================================= */}

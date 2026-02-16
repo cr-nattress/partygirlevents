@@ -1,7 +1,7 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
 
@@ -12,6 +12,67 @@ const STARTER_QUESTIONS = [
   "Do I need a wedding planner?",
 ];
 
+const LEAD_CAPTURE_THRESHOLD = 3; // Show after N assistant messages
+
+function ChatLeadCapture({ onCaptured }: { onCaptured: () => void }) {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+  const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!isValid) return;
+      setStatus("loading");
+      try {
+        await fetch("/api/tool-lead", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, source: "chat" }),
+        });
+        trackEvent("chat_email_captured", { email });
+        onCaptured();
+      } catch {
+        setStatus("error");
+      }
+    },
+    [email, isValid, onCaptured],
+  );
+
+  return (
+    <div className="flex justify-start">
+      <div className="max-w-[85%] space-y-2 rounded-2xl bg-foreground/5 px-4 py-3">
+        <p className="text-sm leading-relaxed text-foreground">
+          I&apos;d love to help you further! Drop your email and Stephanie
+          can follow up with personalized recommendations.
+        </p>
+        <form onSubmit={handleSubmit} className="flex gap-2">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="your@email.com"
+            className="min-w-0 flex-1 rounded-full border border-foreground/10 bg-background px-3 py-1.5 text-xs outline-none focus:border-accent"
+          />
+          <button
+            type="submit"
+            disabled={!isValid || status === "loading"}
+            className="shrink-0 rounded-full bg-accent px-3 py-1.5 text-xs font-medium text-white disabled:opacity-40"
+          >
+            {status === "loading" ? "..." : "Send"}
+          </button>
+        </form>
+        {status === "error" && (
+          <p className="text-xs text-red-500">Failed to save. Try again?</p>
+        )}
+        <p className="text-[10px] text-muted/50">
+          No spam — just a personal follow-up from Stephanie.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export function ChatPanel({ onClose }: { onClose: () => void }) {
   const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
     api: "/api/chat",
@@ -21,10 +82,15 @@ export function ChatPanel({ onClose }: { onClose: () => void }) {
   });
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [emailCaptured, setEmailCaptured] = useState(false);
+
+  const assistantCount = messages.filter((m) => m.role === "assistant").length;
+  const showLeadCapture =
+    !emailCaptured && assistantCount >= LEAD_CAPTURE_THRESHOLD;
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
-  }, [messages]);
+  }, [messages, showLeadCapture]);
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -32,7 +98,6 @@ export function ChatPanel({ onClose }: { onClose: () => void }) {
 
   function sendStarter(question: string) {
     trackEvent("chat_starter_clicked", { question });
-    const fakeEvent = { preventDefault: () => {} } as React.FormEvent;
     handleInputChange({ target: { value: question } } as React.ChangeEvent<HTMLInputElement>);
     // Submit after state update
     setTimeout(() => {
@@ -103,6 +168,19 @@ export function ChatPanel({ onClose }: { onClose: () => void }) {
                 </div>
               </div>
             ))}
+
+            {/* Inline lead capture — appears after enough conversation */}
+            {showLeadCapture && !isLoading && (
+              <ChatLeadCapture onCaptured={() => setEmailCaptured(true)} />
+            )}
+            {emailCaptured && assistantCount >= LEAD_CAPTURE_THRESHOLD && (
+              <div className="flex justify-start">
+                <div className="max-w-[85%] rounded-2xl bg-green-50 px-4 py-2.5 text-sm text-green-800">
+                  Thanks! Stephanie will be in touch soon.
+                </div>
+              </div>
+            )}
+
             {isLoading && (
               <div className="flex justify-start">
                 <div className="flex gap-1 rounded-2xl bg-foreground/5 px-4 py-3">

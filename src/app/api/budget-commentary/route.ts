@@ -1,10 +1,30 @@
 import { openai } from "@ai-sdk/openai";
 import { streamText } from "ai";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export const runtime = "edge";
 
 export async function POST(req: Request) {
   try {
+    if (process.env.AI_BUDGET_COMMENTARY_ENABLED === "false") {
+      return new Response("Budget commentary is temporarily unavailable.", {
+        status: 503,
+      });
+    }
+
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0] ?? "unknown";
+    const { allowed } = await checkRateLimit(
+      `budget:${ip}`,
+      20,
+      86_400_000,
+    );
+    if (!allowed) {
+      return new Response(
+        "You've reached the daily limit for budget estimates. Book a free discovery call for personalized guidance!",
+        { status: 429 },
+      );
+    }
+
     const { breakdown, input } = await req.json();
 
     const prompt = `You are Stephanie, a Colorado mountain wedding planner. A couple is using the budget estimator on your website. Based on their inputs, provide a brief (3-4 sentences) personalized commentary about their budget.

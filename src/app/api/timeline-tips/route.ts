@@ -1,10 +1,30 @@
 import { openai } from "@ai-sdk/openai";
 import { streamText } from "ai";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export const runtime = "edge";
 
 export async function POST(req: Request) {
   try {
+    if (process.env.AI_TIMELINE_TIPS_ENABLED === "false") {
+      return new Response("Timeline tips are temporarily unavailable.", {
+        status: 503,
+      });
+    }
+
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0] ?? "unknown";
+    const { allowed } = await checkRateLimit(
+      `timeline:${ip}`,
+      20,
+      86_400_000,
+    );
+    if (!allowed) {
+      return new Response(
+        "You've reached the daily limit for timeline tips. Book a discovery call for personalized timeline planning!",
+        { status: 429 },
+      );
+    }
+
     const { timeline, input } = await req.json();
 
     const eventSummary = timeline.events

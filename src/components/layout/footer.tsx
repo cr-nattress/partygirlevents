@@ -20,6 +20,13 @@ const serviceLinks = [
   { label: "Special Events", href: "/services#special-events" },
 ];
 
+const toolLinks = [
+  { label: "Wedding Style Quiz", href: "/tools/style-quiz" },
+  { label: "Budget Estimator", href: "/tools/budget-estimator" },
+  { label: "Vibe Translator", href: "/tools/vibe-translator" },
+  { label: "Timeline Generator", href: "/tools/timeline" },
+];
+
 const featuredIn = [
   "Martha Stewart",
   "Brides",
@@ -139,7 +146,7 @@ export function Footer() {
       {/* Main footer content */}
       <div className="py-16">
         <Container>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-4 lg:gap-8">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
             {/* Column 1 — Brand & Contact */}
             <div className="space-y-4">
               <h2 className="font-serif text-2xl">Party Girl Events</h2>
@@ -193,7 +200,19 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Column 4 — Connect */}
+            {/* Column 4 — Free Tools */}
+            <div>
+              <FooterHeading>Free Tools</FooterHeading>
+              <ul className="space-y-2.5">
+                {toolLinks.map((link) => (
+                  <FooterLink key={link.href} href={link.href}>
+                    {link.label}
+                  </FooterLink>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 5 — Connect */}
             <div>
               <FooterHeading>Stay Connected</FooterHeading>
               <form action="#" className="flex gap-2">

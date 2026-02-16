@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/layout/container";
+import { EmailCapture } from "@/components/tools/EmailCapture";
 import Link from "next/link";
 
 /* -------------------------------------------------------------------------- */
@@ -163,6 +164,7 @@ function VibeResults({
   onReset: () => void;
 }) {
   const hasTrackedRef = useRef(false);
+  const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     if (!hasTrackedRef.current) {
@@ -325,11 +327,43 @@ function VibeResults({
         </motion.div>
       )}
 
+      {/* Save vibe board — email capture */}
+      {!saved ? (
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <EmailCapture
+            source="vibe_translator"
+            headline="Save your vibe board"
+            description="Enter your email to save this design direction. We'll send you a copy so you can share it with your partner or reference it when venue shopping."
+            ctaLabel="Save & Email"
+            metadata={{
+              vibeName: parsed.vibeName,
+              colorCount: parsed.colors.length,
+              colors: parsed.colors.map((c) => c.hex),
+            }}
+            onCaptured={() => setSaved(true)}
+          />
+        </motion.div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="mx-auto max-w-2xl rounded-lg border border-green-200 bg-green-50 p-5 text-center"
+        >
+          <p className="font-medium text-green-800">
+            Saved! Check your inbox for your vibe board.
+          </p>
+        </motion.div>
+      )}
+
       {/* CTA */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
         className="mx-auto max-w-2xl rounded-lg border border-accent/20 bg-accent/5 p-6 text-center sm:p-8"
       >
         <h3 className="font-serif text-xl font-semibold">

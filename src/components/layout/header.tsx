@@ -19,6 +19,16 @@ const navLinks = [
     ],
   },
   { label: "Portfolio", href: "/portfolio" },
+  {
+    label: "Tools",
+    href: "/tools/style-quiz",
+    children: [
+      { label: "Wedding Style Quiz", href: "/tools/style-quiz" },
+      { label: "Budget Estimator", href: "/tools/budget-estimator" },
+      { label: "Vibe Translator", href: "/tools/vibe-translator" },
+      { label: "Timeline Generator", href: "/tools/timeline" },
+    ],
+  },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
@@ -33,7 +43,7 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   // Scroll listener
   useEffect(() => {
@@ -114,8 +124,8 @@ export function Header() {
                 <li
                   key={link.href}
                   className="relative"
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
+                  onMouseEnter={() => setOpenDropdown(link.label)}
+                  onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <Link
                     href={link.href}
@@ -131,7 +141,7 @@ export function Header() {
                     <svg
                       className={cn(
                         "h-3 w-3 transition-transform duration-200",
-                        servicesOpen && "rotate-180",
+                        openDropdown === link.label && "rotate-180",
                       )}
                       fill="none"
                       viewBox="0 0 24 24"
@@ -153,7 +163,7 @@ export function Header() {
                   <div
                     className={cn(
                       "absolute left-0 top-full pt-2 transition-all duration-200",
-                      servicesOpen
+                      openDropdown === link.label
                         ? "pointer-events-auto translate-y-0 opacity-100"
                         : "pointer-events-none -translate-y-1 opacity-0",
                     )}

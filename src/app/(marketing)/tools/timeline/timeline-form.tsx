@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/layout/container";
+import { EmailCapture } from "@/components/tools/EmailCapture";
 import {
   generateTimeline,
   formatTime,
@@ -597,6 +598,7 @@ function TimelineView({
   input: TimelineInput;
 }) {
   const hasTrackedRef = useRef(false);
+  const [emailSent, setEmailSent] = useState(false);
 
   useEffect(() => {
     if (!hasTrackedRef.current) {
@@ -720,7 +722,37 @@ function TimelineView({
       {/* AI Tips */}
       <AITimelineTips result={result} input={input} />
 
-      {/* Actions */}
+      {/* Email my timeline */}
+      {!emailSent ? (
+        <EmailCapture
+          source="timeline_tool"
+          headline="Email your timeline"
+          description="Get a copy of your wedding day timeline sent to your inbox — perfect for sharing with your partner, venue coordinator, or wedding party."
+          ctaLabel="Email My Timeline"
+          metadata={{
+            ceremonyTime: input.ceremonyTime,
+            venueType: input.venueType,
+            guestCount: input.guestCount,
+            season: input.season,
+            receptionStyle: input.receptionStyle,
+            totalHours: result.totalHours,
+            eventCount: result.events.length,
+          }}
+          onCaptured={() => setEmailSent(true)}
+        />
+      ) : (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="mx-auto max-w-2xl rounded-lg border border-green-200 bg-green-50 p-5 text-center"
+        >
+          <p className="font-medium text-green-800">
+            Sent! Check your inbox for your timeline.
+          </p>
+        </motion.div>
+      )}
+
+      {/* CTA */}
       <div className="mx-auto max-w-2xl rounded-lg border border-accent/20 bg-accent/5 p-6 text-center sm:p-8">
         <h3 className="font-serif text-xl font-semibold">
           Ready to bring this timeline to life?
@@ -729,7 +761,7 @@ function TimelineView({
           This is a great starting point. A free discovery call will help us
           fine-tune every detail for your specific venue and vision.
         </p>
-        <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <div className="mt-5 flex justify-center">
           <Button
             variant="primary"
             size="lg"
@@ -741,16 +773,6 @@ function TimelineView({
             }
           >
             <a href="/contact">Book a Discovery Call</a>
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => {
-              trackEvent("timeline_cta_clicked", { cta: "download_pdf" });
-              alert("Coming soon! We're working on downloadable PDF timelines.");
-            }}
-          >
-            Download PDF
           </Button>
         </div>
       </div>

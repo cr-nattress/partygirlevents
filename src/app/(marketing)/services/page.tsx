@@ -15,6 +15,7 @@ import {
 } from "@/components/ui";
 import { getServices, getFAQs } from "@/lib/content";
 import type { Service } from "@/types/content";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Our Services & Investment | Party Girl Events",
@@ -66,8 +67,15 @@ export default async function ServicesPage() {
   const weddingTiers = services.filter((s) => s.slug !== "special-events");
   const specialEvents = services.find((s) => s.slug === "special-events");
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://partygirl.events";
+
   return (
     <>
+      <BreadcrumbJsonLd items={[
+        { name: "Home", url: siteUrl },
+        { name: "Services", url: `${siteUrl}/services` },
+      ]} />
+
       {/* ============================================================ */}
       {/* 1. Hero                                                      */}
       {/* ============================================================ */}

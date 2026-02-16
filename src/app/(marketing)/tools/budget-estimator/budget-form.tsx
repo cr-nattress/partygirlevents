@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/layout/container";
+import { EmailCapture } from "@/components/tools/EmailCapture";
 import {
   calculateBudget,
   formatCurrency,
@@ -490,6 +491,7 @@ function ResultsView({
 }) {
   const maxHigh = Math.max(...breakdown.categories.map((c) => c.high));
   const hasTrackedRef = useRef(false);
+  const [unlocked, setUnlocked] = useState(false);
 
   useEffect(() => {
     if (!hasTrackedRef.current) {
@@ -507,7 +509,7 @@ function ResultsView({
 
   return (
     <div className="space-y-10">
-      {/* Total range */}
+      {/* Total range — always visible (teaser) */}
       <div className="text-center">
         <p className="text-sm font-medium uppercase tracking-wider text-accent">
           Your Estimated Budget
@@ -522,76 +524,106 @@ function ResultsView({
         </p>
       </div>
 
-      {/* Category bars */}
-      <div className="mx-auto max-w-2xl space-y-5">
-        <h3 className="font-serif text-lg font-semibold">
-          Budget Breakdown
-        </h3>
-        {breakdown.categories.map((cat) => (
-          <CategoryBar key={cat.name} category={cat} maxHigh={maxHigh} />
-        ))}
-      </div>
+      {/* Email gate — show before full breakdown */}
+      {!unlocked && (
+        <EmailCapture
+          source="budget_tool"
+          headline="Get your full budget breakdown"
+          description="Enter your email to see the detailed category-by-category breakdown, location insights, and personalized tips from Stephanie."
+          ctaLabel="See Full Breakdown"
+          metadata={{
+            location: input.location,
+            season: input.season,
+            style: input.weddingStyle,
+            guestCount: input.guestCount,
+            totalLow: breakdown.totalLow,
+            totalHigh: breakdown.totalHigh,
+          }}
+          onCaptured={() => setUnlocked(true)}
+        />
+      )}
 
-      {/* Notes */}
-      <div className="mx-auto grid max-w-2xl gap-4 sm:grid-cols-2">
-        <div className="rounded-lg border border-foreground/10 bg-surface p-5">
-          <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-accent">
-            Location Insight
-          </h4>
-          <p className="text-sm leading-relaxed text-muted">
-            {breakdown.locationNote}
-          </p>
-        </div>
-        <div className="rounded-lg border border-foreground/10 bg-surface p-5">
-          <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-secondary-600">
-            Season Insight
-          </h4>
-          <p className="text-sm leading-relaxed text-muted">
-            {breakdown.seasonNote}
-          </p>
-        </div>
-      </div>
+      {/* Full breakdown — gated behind email */}
+      {unlocked && (
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="space-y-10"
+        >
+          {/* Category bars */}
+          <div className="mx-auto max-w-2xl space-y-5">
+            <h3 className="font-serif text-lg font-semibold">
+              Budget Breakdown
+            </h3>
+            {breakdown.categories.map((cat) => (
+              <CategoryBar key={cat.name} category={cat} maxHigh={maxHigh} />
+            ))}
+          </div>
 
-      {/* AI Commentary */}
-      <AICommentary breakdown={breakdown} input={input} />
+          {/* Notes */}
+          <div className="mx-auto grid max-w-2xl gap-4 sm:grid-cols-2">
+            <div className="rounded-lg border border-foreground/10 bg-surface p-5">
+              <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-accent">
+                Location Insight
+              </h4>
+              <p className="text-sm leading-relaxed text-muted">
+                {breakdown.locationNote}
+              </p>
+            </div>
+            <div className="rounded-lg border border-foreground/10 bg-surface p-5">
+              <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-secondary-600">
+                Season Insight
+              </h4>
+              <p className="text-sm leading-relaxed text-muted">
+                {breakdown.seasonNote}
+              </p>
+            </div>
+          </div>
 
-      {/* CTA */}
-      <div className="mx-auto max-w-2xl rounded-lg border border-accent/20 bg-accent/5 p-6 text-center sm:p-8">
-        <h3 className="font-serif text-xl font-semibold">
-          Want a personalized plan?
-        </h3>
-        <p className="mt-2 text-sm text-muted">
-          This estimator gives you a solid starting range. A free 20-minute
-          discovery call will give you a detailed plan tailored to your vision.
-        </p>
-        <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-          <Button
-            variant="primary"
-            size="lg"
-            asChild
-            onClick={() =>
-              trackEvent("budget_cta_clicked", {
-                cta: "discovery_call",
-                location: input.location,
-              })
-            }
-          >
-            <a href="/contact">Book a Free Discovery Call</a>
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            asChild
-            onClick={() =>
-              trackEvent("budget_cta_clicked", {
-                cta: "start_over",
-              })
-            }
-          >
-            <a href="/tools/budget-estimator">Start Over</a>
-          </Button>
-        </div>
-      </div>
+          {/* AI Commentary */}
+          <AICommentary breakdown={breakdown} input={input} />
+
+          {/* CTA */}
+          <div className="mx-auto max-w-2xl rounded-lg border border-accent/20 bg-accent/5 p-6 text-center sm:p-8">
+            <h3 className="font-serif text-xl font-semibold">
+              Want a personalized plan?
+            </h3>
+            <p className="mt-2 text-sm text-muted">
+              This estimator gives you a solid starting range. A free 20-minute
+              discovery call will give you a detailed plan tailored to your
+              vision.
+            </p>
+            <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <Button
+                variant="primary"
+                size="lg"
+                asChild
+                onClick={() =>
+                  trackEvent("budget_cta_clicked", {
+                    cta: "discovery_call",
+                    location: input.location,
+                  })
+                }
+              >
+                <a href="/contact">Book a Free Discovery Call</a>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+                onClick={() =>
+                  trackEvent("budget_cta_clicked", {
+                    cta: "start_over",
+                  })
+                }
+              >
+                <a href="/tools/budget-estimator">Start Over</a>
+              </Button>
+            </div>
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 }

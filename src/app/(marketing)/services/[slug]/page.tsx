@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Section, PageHero } from "@/components/layout";
 import { Button } from "@/components/ui";
 import { getServices, getServiceBySlug } from "@/lib/content";
+import { ServiceJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 /* ------------------------------------------------------------------ */
 /*  Static params & metadata                                          */
@@ -44,8 +45,23 @@ export default async function ServiceDetailPage({
     notFound();
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://partygirl.events";
+
   return (
     <>
+      <ServiceJsonLd
+        name={service.name}
+        description={service.description}
+        url={`${siteUrl}/services/${service.slug}`}
+        price={service.startingPrice}
+        image={service.featuredImage?.src ? `${siteUrl}${service.featuredImage.src}` : undefined}
+      />
+      <BreadcrumbJsonLd items={[
+        { name: "Home", url: siteUrl },
+        { name: "Services", url: `${siteUrl}/services` },
+        { name: service.name },
+      ]} />
+
       {/* ============================================================ */}
       {/* 1. Hero                                                      */}
       {/* ============================================================ */}
